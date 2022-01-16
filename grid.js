@@ -47,6 +47,6 @@ window.griddery = function(TT_TT, boobahz){
 		if($.trim($(this).html()) == ""){
 			$(this).remove();
 		}
-	});
+	}); 
 }
 });
