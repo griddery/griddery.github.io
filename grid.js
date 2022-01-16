@@ -42,5 +42,11 @@ window.griddery = function(TT_TT, boobahz){
     })
     
     $(".col-column[col-id], .col-item[col-id]").removeAttr("col-id");
+	
+	$(".col-column").each(function(){
+		if($.trim($(this).html()) == ""){
+			$(this).remove();
+		}
+	});
 }
 });
