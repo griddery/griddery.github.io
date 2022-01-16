@@ -43,4 +43,6 @@ function griddery(TT_TT, boobahz){
 
 	$(".col-column[col-id], .col-item[col-id]").removeAttr("col-id"); 
 }
+	
+griddery();
 });
