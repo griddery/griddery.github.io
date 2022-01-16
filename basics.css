@@ -5,9 +5,9 @@
 .col-column {
     display:table-cell;
     vertical-align:top;
+    width:1%;
 }
 
 .col-item {
     display:block;
-    width:1%;
 }
