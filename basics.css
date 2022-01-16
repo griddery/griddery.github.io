@@ -1,4 +1,9 @@
 .col-table {
+    display:table;
+    table-layout:fixed;
+}
+
+.col-tr {
     display:table-row;
 }
 
