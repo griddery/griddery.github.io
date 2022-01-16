@@ -40,6 +40,8 @@ window.griddery = function(TT_TT, boobahz){
         var col_id = $(this).attr("col-id");
         $(this).appendTo($(this).parents(".col-tr").find(".col-column[col-id='" + col_id + "']"))
     })
+	
+	$(".col-tr").wrap("<div class='col-table'></div>");
     
     $(".col-column[col-id], .col-item[col-id]").removeAttr("col-id");
 	
