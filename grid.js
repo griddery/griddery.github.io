@@ -4,6 +4,7 @@
     
 ---------------------------------------*/
 
+$(document).readY(function(){
 function griddery(TT_TT, boobahz){
 	var root = getComputedStyle(document.documentElement);
 	var JQversion = jQuery.fn.jquery.replaceAll(".","");
@@ -42,3 +43,4 @@ function griddery(TT_TT, boobahz){
 
 	$(".col-column[col-id], .col-item[col-id]").removeAttr("col-id"); 
 }
+});
