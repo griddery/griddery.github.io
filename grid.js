@@ -4,7 +4,7 @@
     
 ---------------------------------------*/
 
-$(document).readY(function(){
+$(document).ready(function(){
 function griddery(TT_TT, boobahz){
 	var root = getComputedStyle(document.documentElement);
 	var JQversion = jQuery.fn.jquery.replaceAll(".","");
