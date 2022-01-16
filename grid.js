@@ -40,5 +40,5 @@ function griddery(TT_TT, boobahz){
 		$(this).appendTo($(this).parents(".col-table").find(".col-column[col-id='" + col_id + "']"))
 	})
 
-	$(".col-column[col-id], .col-item[col-id]").removeAttr("col-id");
+	$(".col-column[col-id], .col-item[col-id]").removeAttr("col-id"); 
 }
