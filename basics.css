@@ -1,0 +1,12 @@
+.col-table {
+    display:table-row;
+}
+
+.col-column {
+    display:table-cell;
+    vertical-align:top;
+}
+
+.col-item {
+    display:block;
+}
