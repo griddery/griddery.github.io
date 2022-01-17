@@ -66,6 +66,9 @@ try setting `.col-column` to `width:0;` or `width:initial;`.
 
 ---
 
+Sadly, you can only use `griddery()` once, and cannot call it a second time.  
+Currently I have no idea how to make it work, but if you have any suggestions I'm open to them.
+
 #### TROUBLESHOOTING:
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
   > remember to include your project code when asking for help!  
