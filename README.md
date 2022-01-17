@@ -62,6 +62,7 @@ try setting `.col-item` to `width:0;` or `width:initial;`.
 .col-item {
     width:0;
 }
+```
 
 ---
 
