@@ -1,8 +1,9 @@
-/*---------------------------------------
+/*---------------------------------------------------
 
     griddery by @glenthemes [tumblr]
+    github.com/griddery/griddery.github.io#readme
     
----------------------------------------*/
+---------------------------------------------------*/
 
 $(document).ready(function(){	
 window.griddery = function(TT_TT, boobahz){
