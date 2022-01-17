@@ -56,6 +56,14 @@ But with `--Columns`, remember to change the name here as well:
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/97827977/149661489-df648df0-0fb7-486c-b826-fec8b0d67cb9.png">
 
 ---
+if your column items are spaced too far apart even though you set a small spacing value,  
+try setting `.col-item` to `width:0;` or `width:initial;`.
+```css
+.col-item {
+    width:0;
+}
+
+---
 
 #### TROUBLESHOOTING:
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
