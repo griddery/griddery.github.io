@@ -57,9 +57,9 @@ But with `--Columns`, remember to change the name here as well:
 
 ---
 if your column items are spaced too far apart even though you set a small spacing value,  
-try setting `.col-item` to `width:0;` or `width:initial;`.
+try setting `.col-column` to `width:0;` or `width:initial;`.
 ```css
-.col-item {
+.col-column {
     width:0;
 }
 ```
