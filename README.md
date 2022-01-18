@@ -66,8 +66,12 @@ try setting `.col-column` to `width:0;` or `width:initial;`.
 
 ---
 
+##### SPECIAL NOTES:
+
 Sadly, you can only use `griddery()` once, and cannot call it a second time.  
 Currently I have no idea how to make it work, but if you have any suggestions I'm open to them.
+
+This does not work with infinite scroll.
 
 #### TROUBLESHOOTING:
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
