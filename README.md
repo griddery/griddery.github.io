@@ -73,6 +73,8 @@ Currently I have no idea how to make it work, but if you have any suggestions I'
 
 This does not work with infinite scroll.
 
+---
+
 #### TROUBLESHOOTING:
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
   > remember to include your project code when asking for help!  
