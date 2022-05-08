@@ -9,17 +9,17 @@
 }
 
 [griddery-col]{
-	display:table-cell;
-	vertical-align:top;
+    display:table-cell;
+    vertical-align:top;
 }
 
 [griddery-item]{
-	display:flex;
-	justify-content:center;
+    display:flex;
+    justify-content:center;
 }
 
 [griddery-item] * {
-	flex:1;
+    flex:1;
 }
 
 /*----- griddery v1.0 (OLD) -----*/
