@@ -1,11 +1,11 @@
 /*----- griddery v2.0 (NEW) -----*/
 [griddery-cont]{
-	display:table;
-	width:100%;
+    display:table;
+    width:100%;
 }
 
 [griddery-tr]{
-	display:table-row;
+    display:table-row;
 }
 
 [griddery-col]{
