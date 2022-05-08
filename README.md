@@ -1,4 +1,16 @@
-### GRIDDERY
+### ₊⁺ GRIDDERY ⁺₊
+
+<sup>**LAST UPDATED: MAY 8TH 14:12 GMT-7**</sup>  
+
+────────────── ⋆⋅☆⋅⋆ ──────────────  
+\
+✨ **version 2.0 is out now!** ✨  
+🎉 **you can now use griddery() on __as many elements as you want__!**\
+\
+If you are still using griddery v1.0, you do not have to do anything extra; the same script now supports both old and new versions.  
+However if you prefer the old version / still need to support it, its documentation can be found here: [waa.ai/griddery_v1](https://waa.ai/griddery_v1)\
+\
+────────────── ⋆⋅☆⋅⋆ ──────────────
 
 Inspired by David DeSandro's [masonry](https://masonry.desandro.com/), GRIDDERY is a script that automatically  
 organizes divs of the same selector into a grid without relying on `.height()` and `position:absolute`,  
@@ -7,10 +19,20 @@ instead utilizing `table-row`, `table-cell`, and `:nth-child` to mimic a grid by
 > If you're a theme user from tumblr and are looking to turn your theme from 1 column to 2 columns,  
   **ask your theme's maker if it's okay to do that first.**
 
-#### [🌸  DEMO HERE  🌸](https://jsfiddle.net/glenthemes/zk9dp6oy/)  
-<sup>(when you're there, scroll down the cat box to see everything)</sup>
+#### [🍹  DEMO HERE  🍹](https://jsfiddle.net/glenthemes/uw25aoc4/)  
+<sup>**DEMO DESCRIPTION:**</sup>  
+* firstly, a group of cats (`<img>`s with the attribute `cat`), placed in alphabetical order to show that when griddery is applied, the cats will line up from left to right, though they're still sorted into columns.
+* next, a piece of unrelated code that won't be grouped
+* then, a group of dogs (`<img>`s with the attribute `dog`), once again placed in alphabetical order to show that they retain their left-to-right order.
+
+<sup>**REQUIREMENTS:**</sup>  
+* jQuery (any version should work)
+
+---
 
 #### HOW TO INSTALL:
+
+**STEP 1: ADDING THE ESSENTIALS**  
 
 Paste the following under `<head>`:
 
@@ -23,55 +45,59 @@ Paste the following under `<head>`:
 
 <script>
 $(document).ready(function(){
-    griddery($(".posts"), "--Columns");
+    gridderyV2(".posts", "--Post-Columns");
 });
 </script>
 ```
+<sub>**NOTES:**</sub>  
+* `".posts"` is just an example div. Change this to whatever item you want wrapped.  
+  make sure you **do not** insert the div name as a jQuery selector.  
+  ╰— instead of `$(".posts")`, you need to put `".posts"`
+* `--Post-Columns` is a [`:root` CSS variable](https://codeburst.io/css-variables-explained-with-5-examples-84adaffaa5bd) for **how many columns you want your grid to consist of.**  
+  you can name it anything you like, just remember that whatever you change it to, this parameter needs to change along with it:
+  
+<img width="380" alt="image" src="https://user-images.githubusercontent.com/97827977/167314312-842a2fe1-252e-4b28-b88b-4a5bb5e9d0a8.png">
 
-* `$(".posts")` is the selector you want to wrap into a grid
-* `"--Columns"` is your CSS variable name for **how many columns you want your grid to consist of.**  
-  do not remove the encasing quotation marks `""`.
-
-Next, add this CSS somewhere between `<style>` and `</style>`:
+<sup>**HOW TO USE GRIDDERY MORE THAN ONCE:**</sup>
+```
+gridderyV2(".some-div", "--A-Columns");
+gridderyV2(".another-div", "--B-Columns");
+```
+\
+────────────── ⋆⋅☆⋅⋆ ──────────────\
+\
+\
+**STEP 2: ADDING THE CSS**  
+Next, paste this somewhere between `<style>` and `</style>`:
 
 ```css
 :root {
-    --Columns:3;
-    --Column-Spacing:15px;
-    --Item-Spacing:15px;
+    --Post-Columns:2;
+    --Post-Columns-Spacing:10px;
+    --Post-Rows-Spacing:10px;
 }
 
-.col-column + .col-column {
-    padding-left:var(--Column-Spacing);
+/* grid column spacing */
+[griddery-id=".posts"]
+[griddery-col] + [griddery-col]{
+    padding-left:var(--Post-Columns-Spacing);
 }
 
-.col-item + .col-item {
-    margin-top:var(--Item-Spacing);
-}
-```
-
-You can rename any of those variables to anything you want.  
-But with `--Columns`, remember to change the name here as well:  
-  
-<img width="300" alt="image" src="https://user-images.githubusercontent.com/97827977/149661489-df648df0-0fb7-486c-b826-fec8b0d67cb9.png">
-
----
-If your columns are spaced too far apart even though you set a small spacing value,  
-try setting `.col-column` to `width:0;` or `width:initial;`.
-```css
-.col-column {
-    width:0;
+/* grid "row" spacing */
+[griddery-id=".posts"]
+[griddery-item] + [griddery-item]{
+    margin-top:var(--Post-Rows-Spacing);
 }
 ```
 
----
+<sub>**NOTES:**</sub>  
+* `[gallery-id=".posts"]` — change `.posts` to the div name you're using.  
+  ✧ don't remove the `" "`  
+  ✧ if your div name contains `.` (class), `div[some-attr]` (attribute) etc, please include them.
+* feel free to change the spacing CSS var names to anything you like;  the spacing is separate from the `gridderyV2()` function so you don't need to update anything there
 
-##### SPECIAL NOTES:
-
-Sadly, you can only use `griddery()` once, and cannot call it a second time.  
-Currently I have no idea how to make it work, but if you have any suggestions I'm open to them.
-
-This does not work with infinite scroll.
+Reminder: if you change the CSS var name for the **column count**, change it in the `gridderyV2()` function as well:
+<img width="380" alt="image" src="https://user-images.githubusercontent.com/97827977/167314312-842a2fe1-252e-4b28-b88b-4a5bb5e9d0a8.png">
 
 ---
 
@@ -79,3 +105,8 @@ This does not work with infinite scroll.
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
   > remember to include your project code when asking for help!  
     if for any reason you can't, DM me and we can figure something out.
+    
+---
+
+#### FOUND GRIDDERY() USEFUL? 💖
+☕ tip/donation jar: [ko-fi.com/glenthemes](https://ko-fi.com/glenthemes)
