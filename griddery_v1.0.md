@@ -1,8 +1,19 @@
 ### GRIDDERY (v1.0)
 
-Hello, as of May 2022 there's a new version of Griddery, please view [the new README](https://github.com/griddery/griddery.github.io#readme) for details!
+#### Hello, as of May 2022 there's a new version of Griddery, please view [the new README](https://github.com/griddery/griddery.github.io#readme) for details!
 
-~~
+​
+​
+​
+​
+​
+​
+​
+
+---
+
+**Instructions for old version:**
+
 Inspired by David DeSandro's [masonry](https://masonry.desandro.com/), GRIDDERY is a script that automatically  
 organizes divs of the same selector into a grid without relying on `.height()` and `position:absolute`,  
 instead utilizing `table-row`, `table-cell`, and `:nth-child` to mimic a grid by sorting the divs into columns.
@@ -77,7 +88,6 @@ Currently I have no idea how to make it work, but if you have any suggestions I'
 This does not work with infinite scroll.
 
 ---
-~~
 
 #### TROUBLESHOOTING:
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
