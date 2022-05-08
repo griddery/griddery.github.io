@@ -1,4 +1,4 @@
-/* ----- griddery v2.0 (NEW) ----- */
+/*----- griddery v2.0 (NEW) -----*/
 [griddery-cont]{
 	display:table;
 	width:100%;
@@ -22,7 +22,7 @@
 	flex:1;
 }
 
-/* ----- griddery v1.0 (OLD) ----- */
+/*----- griddery v1.0 (OLD) -----*/
 .col-tr {
     display:table-row;
 }
