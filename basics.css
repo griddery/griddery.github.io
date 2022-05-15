@@ -18,7 +18,7 @@
     justify-content:center;
 }
 
-[griddery-item] * {
+[griddery-item] > * {
     flex:1;
 }
 
