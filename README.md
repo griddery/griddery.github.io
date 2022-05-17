@@ -51,7 +51,8 @@ $(document).ready(function(){
 ```
 <sub>**NOTES:**</sub>  
 * `".posts"` is just an example div. Change this to whatever item you want wrapped.  
-  make sure you **do not** insert the div name as a jQuery selector.  
+  ⭐ please make sure you only use the child div, instead of e.g. `".parent .child"`; this will not work.  
+  ⭐ make sure you **do not** insert the div name as a jQuery selector.  
   ╰— instead of `$(".posts")`, you need to put `".posts"`
 * `--Post-Columns` is a [`:root` CSS variable](https://codeburst.io/css-variables-explained-with-5-examples-84adaffaa5bd) for **how many columns you want your grid to consist of.**  
   you can name it anything you like, just remember that whatever you change it to, this parameter needs to change along with it:
