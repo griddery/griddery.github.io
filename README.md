@@ -1,6 +1,6 @@
 ### ₊⁺ GRIDDERY ⁺₊
 
-<sup>**LAST UPDATED: MAY 8TH 14:12 GMT-7**</sup>  
+<sup>**LAST UPDATED: 2022-12-21 18:50 GMT-7**</sup>  
 
 ────────────── ⋆⋅☆⋅⋆ ──────────────  
 \
