@@ -19,7 +19,7 @@ instead utilizing `table-row`, `table-cell`, and `:nth-child` to mimic a grid by
 > If you're a theme user from tumblr and are looking to turn your theme from 1 column to 2 columns,  
   **ask your theme's maker if it's okay to do that first.**
 
-#### [🍹  DEMO HERE  🍹](https://jsfiddle.net/glenthemes/uw25aoc4/)  
+### [🍹  DEMO HERE  🍹](https://jsfiddle.net/glenthemes/uw25aoc4/)  
 <sup>**DEMO DESCRIPTION:**</sup>  
 * firstly, a group of cats (`<img>`s with the attribute `cat`), placed in alphabetical order to show that when griddery is applied, the cats will line up from left to right, though they're still sorted into columns.
 * next, a piece of unrelated code that won't be grouped
