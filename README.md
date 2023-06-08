@@ -2,19 +2,21 @@
 
 <sup>**LAST UPDATED: 2022-12-21 18:50 GMT-7**</sup>  
 
-────────────── ⋆⋅☆⋅⋆ ──────────────  
-\
+---
+
 ✨ **version 2.0 is out now!** ✨  
 🎉 **you can now use griddery() on __as many elements as you want__!**\
 \
 If you are still using griddery v1.0, you do not have to do anything extra; the same script now supports both old and new versions.  
-However if you prefer the old version / still need to support it, its documentation can be found here: [waa.ai/griddery_v1](https://waa.ai/griddery_v1)\
-\
-────────────── ⋆⋅☆⋅⋆ ──────────────
+However if you prefer the old version / still need to support it, its documentation can be found here: [dub.sh/griddery_v1](https://dub.sh/griddery_v1)
+
+---
 
 Inspired by David DeSandro's [masonry](https://masonry.desandro.com/), GRIDDERY is a script that automatically  
 organizes divs of the same selector into a grid without relying on `.height()` and `position:absolute`,  
 instead utilizing `table-row`, `table-cell`, and `:nth-child` to mimic a grid by sorting the divs into columns.
+
+Currently relies on jQuery, but a pure-JS version has been added to my roadmap.
 
 > If you're a theme user from tumblr and are looking to turn your theme from 1 column to 2 columns,  
   **ask your theme's maker if it's okay to do that first.**
@@ -64,10 +66,9 @@ $(document).ready(function(){
 gridderyV2(".some-div", "--A-Columns");
 gridderyV2(".another-div", "--B-Columns");
 ```
-\
-────────────── ⋆⋅☆⋅⋆ ──────────────\
-\
-\
+
+---
+
 **STEP 2: ADDING THE CSS**  
 Next, paste this somewhere between `<style>` and `</style>`:
 
