@@ -1,114 +1,125 @@
 ### ₊⁺ GRIDDERY ⁺₊
 
-<sup>**LAST UPDATED: 2022-12-21 18:50 GMT-7**</sup>  
+<sup>**LAST UPDATED: 2023-08-27 21:22 GMT-7**</sup>
 
 ---
 
-✨ **version 2.0 is out now!** ✨  
-🎉 **you can now use griddery() on __as many elements as you want__!**\
-\
-If you are still using griddery v1.0, you do not have to do anything extra; the same script now supports both old and new versions.  
-However if you prefer the old version / still need to support it, its documentation can be found here: [dub.sh/griddery_v1](https://dub.sh/griddery_v1)
+✨ **VERSION 3.0 is out now!** ✨  
+
+🍻&ensp;ɴᴇᴡ: &hairsp;jQuery-free, pure JavaScript & CSS.  
+
+If you are still using the old versions, you do not have to do anything extra.  
+If you prefer the old version or still need to support it:
+- [griddery v1.0 – docs](https://dub.sh/griddery-v1)
+- [griddery v2.0 – docs](https://dub.sh/griddery-v2)
 
 ---
+
+#### 🔹&ensp;━━━&ensp;ABOUT&hairsp;:
 
 Inspired by David DeSandro's [masonry](https://masonry.desandro.com/), GRIDDERY is a script that automatically  
 organizes divs of the same selector into a grid without relying on `.height()` and `position:absolute`,  
 instead utilizing `table-row`, `table-cell`, and `:nth-child` to mimic a grid by sorting the divs into columns.
 
-Currently relies on jQuery, but a pure-JS version has been added to my roadmap.
-
+Heads-up:
 > If you're a theme user from tumblr and are looking to turn your theme from 1 column to 2 columns,  
   **ask your theme's maker if it's okay to do that first.**
 
-### [🍹  DEMO HERE  🍹](https://jsfiddle.net/glenthemes/uw25aoc4/)  
+---
+
+#### 🔹&ensp;━━━&ensp;DEMO & PREVIEW&hairsp;:
+
+〚&ensp;[jsfiddle.net/glenthemes/cw5en8q4](https://jsfiddle.net/glenthemes/cw5en8q4/)&ensp;〛
+\
+\
 <sup>**DEMO DESCRIPTION:**</sup>  
 * firstly, a group of cats (`<img>`s with the attribute `cat`), placed in alphabetical order to show that when griddery is applied, the cats will line up from left to right, though they're still sorted into columns.
 * next, a piece of unrelated code that won't be grouped
 * then, a group of dogs (`<img>`s with the attribute `dog`), once again placed in alphabetical order to show that they retain their left-to-right order.
 
+\
 <sup>**REQUIREMENTS:**</sup>  
-* jQuery (any version should work)
+* basic HTML/CSS knowledge
 
 ---
 
-#### HOW TO INSTALL:
+#### 🔹&ensp;━━━&ensp;HOW TO INSTALL&hairsp;:
 
 **STEP 1: ADDING THE ESSENTIALS**  
 
 Paste the following under `<head>`:
 
 ```html
-<!-- jquery -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<!--✻✻✻✻✻✻  griddery by @glenthemes  ✻✻✻✻✻✻-->
 <script src="//griddery.github.io/grid.js"></script>
 <link href="//griddery.github.io/basics.css" rel="stylesheet">
-
 <script>
-$(document).ready(function(){
-    gridderyV2(".posts", "--Post-Columns");
-});
+document.addEventListener("DOMContentLoaded", () => {
+	gridderyV3({
+		items: ".posts",
+		columns: 2
+	})
+})
 </script>
 ```
-<sub>**NOTES:**</sub>  
-* `".posts"` is just an example div. Change this to whatever item you want wrapped.  
-  ⭐ please make sure you only use the child div, instead of e.g. `".parent .child"`; this will not work.  
-  ⭐ make sure you **do not** insert the div name as a jQuery selector.  
-  ╰— instead of `$(".posts")`, you need to put `".posts"`
-* `--Post-Columns` is a [`:root` CSS variable](https://codeburst.io/css-variables-explained-with-5-examples-84adaffaa5bd) for **how many columns you want your grid to consist of.**  
-  you can name it anything you like, just remember that whatever you change it to, this parameter needs to change along with it:
-  
-<img width="380" alt="image" src="https://user-images.githubusercontent.com/97827977/167314312-842a2fe1-252e-4b28-b88b-4a5bb5e9d0a8.png">
 
-<sup>**HOW TO USE GRIDDERY MORE THAN ONCE:**</sup>
-```
-gridderyV2(".some-div", "--A-Columns");
-gridderyV2(".another-div", "--B-Columns");
+| Option Name | What it is |
+| ------ | ------ |
+| `items` | The selector name of what you want to be wrapped; consider this as the "grid item". |
+| `columns`&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; | The number of grid columns for your elements. *Can either be an integer or a [`:root` CSS variable](https://codeburst.io/css-variables-explained-with-5-examples-84adaffaa5bd).* Valid examples: `2` or `"var(--Post-Columns)"` or `"--Post-Columns"` |
+
+\
+How to use griddery more than once:  
+<sub>Example:</sub>
+```javascript
+document.addEventListener("DOMContentLoaded", () => {
+	gridderyV3({
+		items: ".some-div",
+		columns: 2
+	})
+
+	gridderyV3({
+		items: ".another-div",
+		columns: 3
+	})
+})
+</script>
 ```
 
 ---
 
-**STEP 2: ADDING THE CSS**  
-Next, paste this somewhere between `<style>` and `</style>`:
+**STEP 2: GRID SPACING (CSS)**  
 
+Assuming that we want a grid spacing of `15px`,  
+paste this somewhere between `<style>` and `</style>`:
 ```css
-:root {
-    --Post-Columns:2;
-    --Post-Columns-Spacing:10px;
-    --Post-Rows-Spacing:10px;
-}
-
 /* grid column spacing */
 [griddery-id=".posts"]
 [griddery-col] + [griddery-col]{
-    padding-left:var(--Post-Columns-Spacing);
+    padding-left: 15px;
 }
 
-/* grid "row" spacing */
+/* grid row spacing */
 [griddery-id=".posts"]
 [griddery-item] + [griddery-item]{
-    margin-top:var(--Post-Rows-Spacing);
+    margin-top: 15px;
 }
 ```
 
-<sub>**NOTES:**</sub>  
-* `[gallery-id=".posts"]` — change `.posts` to the div name you're using.  
-  ✧ don't remove the `" "`  
-  ✧ if your div name contains `.` (class), `div[some-attr]` (attribute) etc, please include them.
-* feel free to change the spacing CSS var names to anything you like;  the spacing is separate from the `gridderyV2()` function so you don't need to update anything there
-
-Reminder: if you change the CSS var name for the **column count**, change it in the `gridderyV2()` function as well:
-<img width="380" alt="image" src="https://user-images.githubusercontent.com/97827977/167314312-842a2fe1-252e-4b28-b88b-4a5bb5e9d0a8.png">
+| Selector Name | What it is |
+| ------ | ------ |
+| `[gallery-id=".posts"]` | Change `.posts` to the name of the selector you're using. The full selector name goes between the quotation marks `""`. If the selector name has any `.` or `[]` or `()`, please include them. |
+| `margin-top`&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; | "Row" spacing. |
+| `padding-left`&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; | "Column" spacing. We use `padding-left` instead of `margin-left` because CSS tables don't work with the `margin` property. |
 
 ---
 
-#### TROUBLESHOOTING:
+#### 🔹&ensp;━━━&ensp;TROUBLESHOOTING&hairsp;:
 💌 Discord: [discord.gg/RcMKnwz](https://discord.gg/RcMKnwz)
-  > remember to include your project code when asking for help!  
-    if for any reason you can't, DM me and we can figure something out.
+  > Remember to include your project code when asking for help!  
+    If for any reason you can't, DM me and we can figure something out.
     
 ---
 
-#### FOUND GRIDDERY() USEFUL? 💖
+#### 🔹&ensp;━━━&ensp;FOUND GRIDDERY USEFUL? 💖
 ☕ tip/donation jar: [ko-fi.com/glenthemes](https://ko-fi.com/glenthemes)
