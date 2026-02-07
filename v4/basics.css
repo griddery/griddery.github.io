@@ -1,0 +1,41 @@
+/* griddery v4.0 */
+:root, [griddery-cont]{
+  --Griddery-Column-Width:calc((var(--Griddery-Width) - (var(--Griddery-Gap) * (var(--Griddery-Columns) - 1))) / var(--Griddery-Columns));
+}
+
+div[griddery-viewport-watcher]{
+  position:fixed;
+  top:100vh;left:0;
+  width:100vw;
+  height:0;
+  visibility:hidden;
+  z-index:-1;
+}
+
+[griddery-cont]{
+  display:grid;
+  width:var(--Griddery-Width);
+  grid-template-columns:repeat(var(--Griddery-Columns),1fr);
+  align-items:flex-start; /* default to v-align top */
+}
+
+[griddery-align-middle],[griddery-align-center]{ align-items:center }
+[griddery-align-bottom],[griddery-align-bot]{ align-items:flex-end }
+
+[griddery-col]{
+  display:grid;
+  grid-auto-rows:min-content; /* just in case */
+  min-width:0;
+}
+
+[griddery-cont], [griddery-col]{
+  gap:var(--Griddery-Gap);
+}
+
+[griddery-col], [griddery-item]{
+  min-width:0;
+}
+
+[griddery-item]{
+  max-width:100%;
+}
