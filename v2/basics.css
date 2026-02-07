@@ -1,0 +1,29 @@
+/*----- griddery v2.0 -----*/
+[griddery-cont]{
+    display:table;
+    width:100%;
+}
+
+[griddery-tr]{
+    display:table-row;
+}
+
+[griddery-col]{
+    display:table-cell;
+    vertical-align:top;
+}
+
+[griddery-item]{
+    display:flex;
+    justify-content:center;
+}
+
+[griddery-item] > * {
+    flex:1;
+}
+
+[griddery-item] img,
+[griddery-item] iframe,
+[griddery-item] figure {
+    max-width:100%;
+}
