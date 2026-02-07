@@ -257,7 +257,7 @@ window.gridderyV4 = (opts,action) => {
     for(let i=0; i<cols; i++){
       let col = document.createElement("div")
       col.dataset.col = colDex++
-      col.setAttribute("griddery-col","")
+      col.setAttribute("griddery-column","")
       grid.append(col)
     }
 
@@ -272,14 +272,14 @@ window.gridderyV4 = (opts,action) => {
       item.dataset.col = order
 
       // push into col
-      grid.querySelector(`[griddery-col][data-col="${order}"]`)?.append(item)
+      grid.querySelector(`[griddery-column][data-col="${order}"]`)?.append(item)
     })
   }//end makeCols func
 
   // unwrap cols
   function destroyCols(grid){
-    if(grid.querySelector("[griddery-col] > [griddery-item]")){
-      grid.querySelectorAll("[griddery-col]")?.forEach(col => {
+    if(grid.querySelector("[griddery-column] > [griddery-item]")){
+      grid.querySelectorAll("[griddery-column]")?.forEach(col => {
         if(col.firstElementChild.matches("[griddery-item]")){
           col.replaceWith(...col.childNodes)
         }
@@ -305,7 +305,7 @@ window.gridderyV4 = (opts,action) => {
       // wrap grid
       wrapItemsIntoGrid(grid, itemsStr, {
         tag: "div",
-        attr: "griddery-cont"
+        attr: "griddery-container"
       }, (newGrids) => {
         // run griddery on the new griddery cont
         newGrids?.forEach(grid => {
