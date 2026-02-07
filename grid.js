@@ -7,7 +7,7 @@
     A JavaScript plugin that organizes elements of the same selector
     into a grid without relying on height and position:absolute.
 
-							© 2021-2026 glenthemes | git.new/griddery
+              © 2021-2026 glenthemes | git.new/griddery
 
 ========================================================================*/
 
