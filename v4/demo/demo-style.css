@@ -1,0 +1,30 @@
+body {
+	margin:15px;
+	font-family:sans-serif;
+	font-size:0.75rem;
+}
+
+img {
+	vertical-align:middle;
+	max-width:100%;
+	width:100%;
+}
+
+[griddery-item]{
+	position:relative;
+	border-radius:4px;
+	box-shadow:4px 4px 14px rgba(0,0,0,15%);
+	overflow:hidden;
+	z-index:0;
+}
+
+[griddery-item] .label {
+	position:absolute;
+	top:0;left:0;
+	padding:4px 6px;
+	border-radius:0 0 4px 0;
+	background:rgba(0,0,0,69%);
+	color:white;
+	font-family:monospace;
+	z-index:1;
+}
