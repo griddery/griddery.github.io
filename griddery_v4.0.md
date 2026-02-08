@@ -4,7 +4,7 @@
 
 **Author:** @glenthemes  
 **Version:** 4.0  
-**Last updated:** 2026-02-08 10:10AM UTC-8
+**Last updated:** 2026-02-08 10:44AM UTC-8
 
 ---
 
@@ -33,9 +33,9 @@ Inspired by David DeSandro's [masonry](https://masonry.desandro.com/), GRIDDERY 
 > 🎉 **VERSION 4.0 is out now!** 🎉<br>
 > If you are still using the old versions, you do not have to do anything extra; the existing griddery script and stylesheets should still function properly.<br>
 > If you prefer the old version(s) or still need to support them:<br>
-> ⦿ [griddery v1.0 – docs](https://git.new/griddery-v1)<br>
-> ⦿ [griddery v2.0 – docs](https://git.new/griddery-v2)<br>
-> ⦿ [griddery v3.0 – docs](https://git.new/griddery-v3)
+> • [griddery v1.0 – docs](https://git.new/griddery-v1)<br>
+> • [griddery v2.0 – docs](https://git.new/griddery-v2)<br>
+> • [griddery v3.0 – docs](https://git.new/griddery-v3)
 
 > [!IMPORTANT]  
 > If you're a theme user from Tumblr and are looking to turn your theme from 1 column to e.g. 2 columns, **please ask your theme's maker if it's okay to do that first.**
