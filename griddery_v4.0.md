@@ -158,7 +158,7 @@ The above files (i.e. [the JavaScript](https://griddery.github.io/grid.min.js) a
 <link href="//griddery.github.io/v4/basics.min.css" rel="stylesheet">
 ```
 
-If you want perform further actions once the grid has initialized, you can do so like this:
+If you want to perform further actions once the grid has initialized, you can do so like this:
 ```javascript
 gridderyV4({
     // ... your griddery settings
