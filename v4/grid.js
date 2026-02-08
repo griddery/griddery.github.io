@@ -13,7 +13,7 @@
 window.gridderyV4 = (opts,action) => {
   if(!opts || !opts.items || !opts.columns) return;
 
-  let grid = opts.container
+  let grid = opts.container || document.body
   let itemsStr = opts.items
   let cols = opts.columns
 
@@ -23,10 +23,8 @@ window.gridderyV4 = (opts,action) => {
 
   function gridderyVPDims(e,t){e&&new ResizeObserver(e=>{for(let n of e){let{top:o,left:c,width:f,height:i}=n.contentRect;t({top:o,left:c,width:f,height:i})}}).observe(e)}
 
-  function getType(t){return({}).toString.call(t).match(/\s([a-zA-Z]+)/)[1].toLowerCase()}
-
   // wrap item + item into grid
-  function wrapItemsIntoGrid(e,t,l,n){let r=[],i=e.querySelectorAll(`:scope > ${t}`),a=0,m=i.length;i?.forEach(e=>{if(!e.previousElementSibling?.matches(t)){let i=document.createElement(l.tag);i.setAttribute(l.attr,""),e.before(i);let o=i.nextElementSibling;for(o&&(!o||o.matches(t))||i.remove(),o&&r.push(i);o&&o.matches(t);)i.append(o),o=i.nextElementSibling}++a===m&&n?.(r)})}
+  function wrapItemsIntoGrid(e,t,l,n){let r=[],i=e.querySelectorAll(`${t}:not(${t} ${t})`),a=0,m=i.length;i?.forEach(e=>{if(!e.previousElementSibling?.matches(t)){let i=document.createElement(l.tag);i.setAttribute(l.attr,""),e.before(i);let o=i.nextElementSibling;for(o&&(!o||o.matches(t))||i.remove(),o&&r.push(i);o&&o.matches(t);)i.append(o),o=i.nextElementSibling}++a===m&&n?.(r)})}
 
   // Number() the cols input
   // if it's a css variable, clean it
