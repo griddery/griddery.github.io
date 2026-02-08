@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 **2.** Add the following CSS (paste this somewhere between `<style>` and `</style>`):
 ```css
 :root {
-    --Griddery-Gap: 10px;
+    --Griddery-Gap: 10px; /* change this to your grid spacing */
 }
 ```
 
@@ -169,7 +169,7 @@ The above files (i.e. [the JavaScript](https://griddery.github.io/grid.min.js) a
 
 ### 💖 Attribution:
 
-You are welcome to use griddery in both free and commercial projects; in either case, please leave a credit; you can [link to this repository](https://github.com/griddery/griddery.github.io) or [link to my Tumblr post](https://glenthemes.tumblr.com/post/673598526813536256/griddery)!
+You are welcome to use griddery in both free and commercial projects! In either case, please leave a credit; you can [link to this repository](https://github.com/griddery/griddery.github.io) or [link to my Tumblr post](https://glenthemes.tumblr.com/post/673598526813536256/griddery).
 
 ---
 
