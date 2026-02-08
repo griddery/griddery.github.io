@@ -30,11 +30,11 @@ Inspired by David DeSandro's [masonry](https://masonry.desandro.com/), GRIDDERY 
 - basic JavaScript syntax knowledge
 
 > [!TIP]
-> 🎉 **VERSION 4.0 is out now!** 🎉
-> If you are still using the old versions, you do not have to do anything extra; the existing griddery script and stylesheets should still function properly.
-> If you prefer the old version(s) or still need to support them:
-> ⦿ [griddery v1.0 – docs](https://git.new/griddery-v1)
-> ⦿ [griddery v2.0 – docs](https://git.new/griddery-v2)
+> 🎉 **VERSION 4.0 is out now!** 🎉<br>
+> If you are still using the old versions, you do not have to do anything extra; the existing griddery script and stylesheets should still function properly.<br>
+> If you prefer the old version(s) or still need to support them:<br>
+> ⦿ [griddery v1.0 – docs](https://git.new/griddery-v1)<br>
+> ⦿ [griddery v2.0 – docs](https://git.new/griddery-v2)<br>
 > ⦿ [griddery v3.0 – docs](https://git.new/griddery-v3)
 
 > [!IMPORTANT]  
@@ -79,18 +79,26 @@ Lastly, a group of dogs (`<img>`s with the attribute `dog`) placed in alphabetic
 <link href="//griddery.github.io/basics.min.css" rel="stylesheet">
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-	gridderyV4({
-		items: ".posts", // change this to your grid item's selector
-		columns: 2 // number of columns
-	})
+    gridderyV4({
+        items: ".posts", // change this to your grid item's selector
+        columns: 2, // number of columns
+
+        // optional responsiveness below:
+        responsive: {
+            breakpoints: {
+                "min-width: 720px": 2,
+                "max-width: 720px": 1,
+            }
+        }
+    })
 })
+</script>
 ```
-☝️ The above snippet contains the barebones of what's needed to make griddery work. For further settings (e.g. responsiveness), see [**🛠️ Options**](#️options) below.
 
 **2.** Add the following CSS (paste this somewhere between `<style>` and `</style>`):
 ```css
 :root {
-	--Griddery-Gap: 10px;
+    --Griddery-Gap: 10px;
 }
 ```
 
@@ -118,24 +126,24 @@ Assuming that we want to use griddery as follows:
 We would call `gridderyV4()` for each instance like so:
 ```javascript
 gridderyV4({
-	items: ".posts",
-	columns: 2
+    items: ".posts",
+    columns: 2
 })
 
 gridderyV4({
-	items: ".photos",
-	columns: 3
+    items: ".photos",
+    columns: 3
 })
 ```
 
 And our grid spacing would be assigned in the CSS like so:
 ```css
 [griddery-id=".posts"]{
-	--Griddery-Gap:35px;
+    --Griddery-Gap:35px;
 }
 
 [griddery-id=".photos"]{
-	--Griddery-Gap:10px;
+    --Griddery-Gap:10px;
 }
 ```
 ☝️ The full selector names go between the quotation marks `""` and supports [HTML attributes](https://www.sitepoint.com/how-why-use-html5-custom-data-attributes/#faq-question-1503130000006). If your selector name has any `#` or `.` or `[]` or `()`, please include them.
