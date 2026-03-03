@@ -41,10 +41,12 @@ window.gridderyV4 = (opts,action) => {
     // create number of columns
     let colDex = 1
     for(let i=0; i<cols; i++){
-      let col = document.createElement("div")
-      col.dataset.col = colDex++
-      col.setAttribute("griddery-column","")
-      grid.append(col)
+      if(!grid.querySelector(`[griddery-column][data-col="${colDex}"]`)){
+        let col = document.createElement("div")
+        col.dataset.col = colDex++
+        col.setAttribute("griddery-column","")
+        grid.append(col)
+      }
     }
 
     items?.forEach((item,i) => {
@@ -66,9 +68,7 @@ window.gridderyV4 = (opts,action) => {
   function destroyCols(grid){
     if(grid.querySelector("[griddery-column] > [griddery-item]")){
       grid.querySelectorAll("[griddery-column]")?.forEach(col => {
-        if(col.firstElementChild.matches("[griddery-item]")){
-          col.replaceWith(...col.childNodes)
-        }
+        col.replaceWith(...col.childNodes)
       })
     }
   }
@@ -105,20 +105,6 @@ window.gridderyV4 = (opts,action) => {
             }
           }
 
-          // add viewport width watcher if it doesn't already have one
-          let vp
-          let findVP = document.querySelector("div[griddery-viewport-watcher]")
-          if(!findVP){
-            let obsvr = document.createElement("div")
-            obsvr.setAttribute("griddery-viewport-watcher","")
-            obsvr.ariaHidden = true
-            obsvr.tabIndex = -1
-            document.body.append(obsvr)
-            vp = obsvr
-          } else {
-            vp = findVP
-          }
-
           // wrap items and use its new wrapper as The Item(s)
           grid.querySelectorAll(`${itemsStr}:not(${itemsStr} ${itemsStr})`)?.forEach(item => {
             if(!item.closest("[griddery-item]")){
@@ -134,34 +120,107 @@ window.gridderyV4 = (opts,action) => {
 
           makeCols(grid,cols,itemEls)
           
-          // run [optional] further action if so specified
-          action?.(grid)
+          // run [optional] further action(s) if so specified
+          let actions = {
+            destroyGriddery(){
+              let arr = []
+              grid.querySelectorAll("[griddery-item][data-id]")?.forEach(n => {
+                arr.push(Number(n.dataset.id))
+              })
+
+              let itemsInOrder = arr.sort((a,b) => a - b) // i.e. [1, 2, 3]
+              let temp = document.createElement("div")
+              grid.after(temp)
+              itemsInOrder?.forEach(num => {
+                grid.querySelectorAll(`[griddery-item][data-id="${num}"]`)?.forEach(teh => {
+                  temp.append(teh)
+                  teh.replaceWith(...teh.childNodes)
+
+                  if(num == itemsInOrder.length){
+                    temp.replaceWith(...temp.childNodes)
+                    grid.remove()
+                  }
+                })
+              })
+            }//end destroy func
+          }//end actions
+          action?.(grid,actions)
           
           // responsive/resize stuff
           if(opts.responsive && opts.responsive.breakpoints){
+
+            let gridWidth = 0
+            let useGrid = (opts.responsive.basedOnGrid === true || opts.responsive.basedOnGrid == "yes") ? true : false
+
+            if(useGrid){
+              gridderyVPDims(grid, ({ width }) => {
+                gridWidth = Math.round(width)
+              })
+            }
+
+            // add viewport width watcher if it doesn't already have one
+            let vp
+            let findVP = document.querySelector("div[griddery-viewport-watcher]")
+            if(!findVP){
+              let obsvr = document.createElement("div")
+              obsvr.setAttribute("griddery-viewport-watcher","")
+              obsvr.ariaHidden = true
+              obsvr.tabIndex = -1
+              document.body.append(obsvr)
+              vp = obsvr
+            } else {
+              vp = findVP
+            }
 
             let breakpoints = opts.responsive?.breakpoints
 
             let triggered = false
 
-            gridderyVPDims(vp, () => {
+            function rerunGriddery(bp){
+              // is true
+              if(triggered === false){
+                triggered = true
+
+                let newCols = getColsNum(breakpoints[bp])
+                destroyCols(grid)
+                makeCols(grid,newCols,itemEls)
+                grid.style.setProperty("--Griddery-Columns",newCols)
+
+                triggered = false
+              }
+            }//end rerunGriddery func
+
+            gridderyVPDims(vp, ({width}) => {
+              let vpw = width
+              // console.log(`grid width: ${gridWidth} || viewport: ${width}`)
+
               for(let bp in breakpoints){
-                if(window.matchMedia(`(${bp})`).matches){
-                  // is true
-                  if(triggered === false){
-                    triggered = true
+                if(bp.includes("width:") && bp.includes("px")){
+                  // "min" or "max (from min-width [or] max-width)
+                  let condition = bp.split(":")[0].trim()
+                  if(condition.includes("-width")){
+                    condition = condition.split("-width")[0]
+                  }
 
-                    let newCols = getColsNum(breakpoints[bp])
-                    destroyCols(grid)
-                    makeCols(grid,newCols,itemEls)
+                  // the breakpoint px val, e.g. 768px
+                  let value = bp.split(":")[1].trim()
+                  if(value.includes("px")){
+                    value = value.split("px")[0]
+                  }
 
-                    grid.style.setProperty("--Griddery-Columns",newCols)
-
-                    triggered = false
+                  // console.log(`${useGrid ? "grid" : "viewport"} width: ${useGrid ? gridWidth : vpw} || breakpoint val: ${value}`)
+                   if(condition == "max"){
+                    if((useGrid ? gridWidth : vpw) < value){
+                      rerunGriddery(bp)
+                    }
+                  } else if(condition == "min"){
+                    if((useGrid ? gridWidth : vpw) > value){
+                      rerunGriddery(bp)
+                    }
                   }
                 }
-              }
-            })
+              }//end breakpoints forEach
+            })//end vp watch evt
           }//end: yes, responsive
         })//end newGrids each
       })//end wrapItemsIntoGrid

@@ -4,7 +4,7 @@
 
 **Author:** @glenthemes  
 **Version:** 4.0  
-**Last updated:** 2026-02-08 10:44AM UTC-8
+**Last updated:** 2026-03-03 12:26PM UTC-8
 
 ---
 
@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
             breakpoints: {
                 "min-width: 720px": 2,
                 "max-width: 720px": 1,
-            }
+            },
+            basedOnGrid: false,
         }
     })
 })
@@ -114,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 | `columns` | **required** | • `number`<br>• [`:root` CSS variable](https://codeburst.io/css-variables-explained-with-5-examples-84adaffaa5bd)<br>(e.g. `"var(--Columns)"` or `"--Columns"`) | Number of columns. |
 | `responsive` | optional | `object` | 🖥️ Must be included if you want to change the number of columns based on screen size.<br><br>Holds the `breakpoints` objects within. |
 | `breakpoints`   | optional | `object` | 🖥️ Must be included if you want to change the number of columns based on screen size.<br><br>Each line is a [CSS media query](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries) paired with the number of columns you want displayed at said screen size.<br><br>• e.g.`"min-width: 500px": 3` would display 3 columns when the screen is *at least* 500px wide.<br>• e.g. `"max-width:400px": 1` would display 1 column when the screen is *at most* 400px wide.<br><br>You can include as many breakpoints as you want.<br><br>💡**Tip:** Start with wide screens e.g. desktop sizes first, then decrease as you go.<br><br>💡**Tip:** For the first breakpoint, I suggest having the same column number as the fixed one assigned in the `columns` option above. You can see this in my [demo](https://jsfiddle.net/glenthemes/axpzvhmb). |
+| `basedOnGrid` | optional | `true` or `false` | • `true`: your `breakpoints` option's media queries will be **based on the grid's width** rather than the screen width.<br>• `false`: your `breakpoints` option's media queries will be based on **the screen width** rather than the grid's width.<br><br>Useful if you wish to use griddery on a container that doesn't take up most of the screen width (e.g. an accompanying sidebar exists). |
 
 ---
 
@@ -164,6 +166,17 @@ gridderyV4({
     // ... your griddery settings
 }, (grid) => {
     grid.classList.add("griddery-done") // or any action that you wish to do
+})
+```
+
+If you want to destroy griddery (destroys the griddery layout and reverts all items back to their individual states):
+```javascript
+gridderyV4({
+    // ... your griddery settings
+}, (grid, { destroyGriddery }) => {
+    if(/* some condition here */){
+        destroyGriddery()
+    }
 })
 ```
 
